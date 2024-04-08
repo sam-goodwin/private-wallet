@@ -9,11 +9,22 @@ export default $config({
     };
   },
   async run() {
+    const rootKey = new sst.Secret("RootKey", "my-secret-value");
+
     const bucket = new sst.aws.Bucket("Storage");
 
+    const table = new sst.aws.Dynamo("Table", {
+      fields: {
+        userId: "string",
+      },
+      primaryIndex: {
+        hashKey: "userId",
+      },
+    });
+
     const web = new sst.aws.Nextjs("Web", {
-      link: [bucket],
-      path: "src"
+      link: [bucket, table, rootKey],
+      path: "src",
     });
 
     return {

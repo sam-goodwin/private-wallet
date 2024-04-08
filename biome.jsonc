@@ -1,0 +1,25 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.4/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      }
+    }
+  },
+  // https://biomejs.dev/formatter/#configuration
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf",
+    "ignore": []
+  }
+}
