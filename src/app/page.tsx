@@ -1,9 +1,16 @@
-import TransactionForm from "@/components/transaction-form";
+// import { Resource } from "sst";
+import { PrivateKey } from "o1js";
 
-export default function Home() {
+export default async function Root() {
+  const isLive = !!process.env.SST_LIVE;
+
+  // const privateKey = PrivateKey.fromBase58(Resource.RootKey.value);
+  const privateKey = PrivateKey.random();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <TransactionForm />
+    <main>
+      <p>{isLive ? "Live" : "Not Live"}</p>
+      <h1>Public Key</h1>
+      <span>{privateKey.toPublicKey().toBase58()}</span>
     </main>
   );
 }

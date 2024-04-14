@@ -24,7 +24,6 @@ export default $config({
 
     const web = new sst.aws.Nextjs("Web", {
       link: [bucket, table, rootKey],
-      path: "src",
     });
 
     return {
